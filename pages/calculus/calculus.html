@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus</title>
+    <!-- links -->
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/calc_style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside>
+            <nav>
+                <div class="local_navigation">
+                    <h2>Калькуляторы</h2>
+                    <ul>
+                        <li><button id="clasic" class="nav_button">Класический калькулятор</button></li>
+                        <li><button id="curency" class="nav_button">Валютный калькулятор</button></li>
+                        <li><button id="percent" class="nav_button">Процентный калькулятор</button></li>
+                    </ul>
+                </div>
+                <!-- /.local_navigation -->
+                <div class="global_navigation">
+                    <h2>Глобальное меню</h2>
+                    <ul>
+                        <li><a href="/index.html">Главная страница</a></li>
+                        <li><a href="./calculus.html">Калькуляторы</a></li>
+                        <li><a href="#">To-do list</a></li>
+                        <li><a href="#">Игры</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">React</a></li>
+                    </ul>
+                </div>
+                <!-- /.global_navigation -->
+            </nav>
+        </aside>
+        <main>
+            <div id="clasic_block" class="calculus clasic active">
+                <div class="calculator">
+                    <output></output>
+                </div>
+                <div class="calculator_description">
+                    <h3>Класический калькулятор</h3>
+                    <p>Данный калькулятор написан на нативном JavaScript, вcе его HTML елементы 
+                        генерируются програмно и стилизуютя вручную используя CSS, для выполнения
+                        расчетов используется подключаемая библиотека math.js 
+                    </p>
+                </div>
+            </div>
+            <!-- /.clasic -->
+            <div id="curency_block" class="calculus curency">
+                <div class="curency_list">
+                    <div id="curency_chart">
+
+                    </div>
+                    <!-- /.curency_chart -->
+                    <div class="curency_calculator">
+
+                    </div>
+                    <!-- /.curency_calculator -->
+                </div>
+                <!-- /.curency_list -->
+                <div class="curency_description">
+                
+                </div>
+                <!-- /.curency_list -->
+            </div>
+            <!-- /.curency -->
+            <div id="percent_block" class="calculus percent"></div>
+            <!-- /.percent -->
+        </main>
+    </div>
+    <!-- /.wrapper -->
+        <!-- math.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.0.0/math.min.js"></script>
+        <!-- main scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

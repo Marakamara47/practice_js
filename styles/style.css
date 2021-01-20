@@ -1,0 +1,26 @@
+
+.wrapper{
+    font-family: 'Roboto';
+    padding: 2.6vw 10vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: lightgray;
+}
+.card{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 20vw;
+    margin-bottom: 3vw;
+    border-radius: 50px;
+}
+a{
+    color: greenyellow;
+}
+p{
+    font-size: 1vw;
+    text-align: center;
+}
