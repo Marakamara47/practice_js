@@ -68,12 +68,11 @@
                                 <option>Выберите нужную валюту для определения цены</option>
                                 <option value="usd">USD</option>
                                 <option value="uah">UAH</option>
-                                <option value="btc">BTC</option>
                                 <option value="eth">ETH</option>
                             </select>
                             <button class="curency_calculate" type="submit" onclick="getValue()">Вычислить</button>
                         </form>
-                        <span class="curency_result">Pезультат вычеслений</span>
+                        <span id="curency_result">Pезультат вычеслений</span>
                         <p class="curency_description">
                             Данный калькулятор при загрузке страницы обращается на сервер Coingeco.com 
                             используя их API, в ответ на запрос сервер присылает информацию о названии 
@@ -86,7 +85,69 @@
                 </div>
                 <!-- /.curency_list -->
                 <div class="curency_code">
-                
+                    <pre>
+----------------coingecko апи + создание карточек через цикл
+
+request("GET", "https://api.coingecko.com/api/v3/coins/list")
+.then((geko) => {
+    let gekoParsing = JSON.parse(geko.target.responseText)
+
+    for (let i = 0; i &lt= gekoParsing.length; i++) {
+        let coinName = gekoParsing[i].name;
+        let coinSymbol = gekoParsing[i].symbol;
+        let coinId = gekoParsing[i].id;
+        let curencyChart = document.getElementById('curency_chart');
+        let div = document.createElement('div');
+
+        let select = document.getElementById('dropdown');
+        let optionAdd = document.createElement('option');
+        
+        div.id = coinId;
+        div.className = "curency_card";
+        div.innerHTML = `&lth2> &ltb>Имя:&lt/b> ${coinName} &lt/h2> 
+        &ltspan> &ltb>Тикер:&lt/b> ${coinSymbol}&lt/span>`
+
+        curencyChart.append(div);
+
+        optionAdd.value = coinId;
+        optionAdd.innerHTML = `${coinSymbol}`;
+        select.append(optionAdd);
+    }
+}).catch()
+
+function request(method, url) {
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = resolve;
+        xhr.onerror = reject;
+        xhr.send();
+    });
+};
+
+----------------работа калькулятора
+
+function getValue() {
+
+    let getCoin = document.getElementById("dropdown");
+    let getCoinValue = getCoin.value;
+
+    let getNumber = document.getElementById("curence_get_number");
+    let getNumberValue = getNumber.value;
+
+    let getPrice = document.getElementById("dropdown_price");
+    let getPriceValue = getPrice.value;
+
+    request("GET", "https://api.coingecko.com/api/v3/simple/price?ids="
+    +getCoinValue+"&vs_currencies="+getPriceValue)
+    .then((coin) => {
+
+        let coinParsing = JSON.parse(coin.target.responseText)     
+        let curencyResult = getNumberValue*coinParsing[getCoinValue][getPriceValue];
+        document.getElementById("curency_result").innerHTML = curencyResult;
+    }).catch();
+};
+                    </pre>
                 </div>
                 <!-- /.curency_list -->
             </div>

@@ -163,10 +163,6 @@ function request(method, url) {
 ////////////////////////////////////////
 // работа калькулятора
 
-
-// let formSubmit = document.getElementsByClassName("curency_calculate");
-// console.log(formSubmit);
-
 function getValue() {
 
     let getCoin = document.getElementById("dropdown");//получаем доступ к полю
@@ -178,21 +174,12 @@ function getValue() {
     let getPrice = document.getElementById("dropdown_price");//получаем доступ к полю
     let getPriceValue = getPrice.value;//получаем начения для испльзования в апи в качестве айди
 
-    request("GET", "https://api.coingecko.com/api/v3/simple/price?ids=`${getCoinValue}`&vs_currencies=`${getPriceValue}`")
+    request("GET", "https://api.coingecko.com/api/v3/simple/price?ids="+getCoinValue+"&vs_currencies="+getPriceValue)
     .then((coin) => {
-        console.log(coin);
-        let coinParsing = JSON.parse(coin.target.responseText)// парсит джсон для работы с js обьектом
-        console.log(coinParsing);
-    }).catch();
 
-    function request(method, url) {
-        return new Promise(function (resolve, reject) {
-            let xhr = new XMLHttpRequest();
-            xhr.open(method, url);
-            xhr.onload = resolve;
-            xhr.onerror = reject;
-            xhr.send();
-        });// что делать при запуске функции и в каких случаях
-    };
+        let coinParsing = JSON.parse(coin.target.responseText)// парсит джсон для работы с js обьектом        
+        let curencyResult = getNumberValue*coinParsing[getCoinValue][getPriceValue];//умножает количество на цену
+        document.getElementById("curency_result").innerHTML = curencyResult;//записывает результат в штмл
+    }).catch();
 };
 
