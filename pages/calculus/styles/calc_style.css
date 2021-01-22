@@ -130,15 +130,13 @@ button {
 }
 
 /* calculus curency */
-.curency{
-    
-}
 .curency_list{
     height: 47vw;
     width: 39vw;
 }
 #curency_chart{
     overflow: auto;
+    overflow-x: hidden;
     height: 23.5vw;
     display: flex;
     flex-direction: row;
@@ -176,15 +174,72 @@ button {
     font-size: 1vw;
     padding: 0 0 0.3vw 0;
 }
-
 .curency_card > span{
     font-size: 1vw;
     padding: 0;
 }
-
-.curency_calculator{}
+.curency_calculator{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    height: 23vw;
+    margin-top: 0.5vw;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#dropdown, #dropdown_price{
+    font-size: 1vw;
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    color: greenyellow;
+    background-color: black;
+    width: 38vw;
+    margin-top: 0.2vw;
+    margin-bottom: 1vw;
+}
+#curence_get_number{
+    font-size: 1vw;
+    color: greenyellow;
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    background-color: black;
+    width: 38vw;
+    margin-bottom: 1vw;
+}
+#curence_get_number::-webkit-input-placeholder { 
+    color: greenyellow; 
+}
+#dropdown_price{}
+.curency_calculate{
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    padding: 1vw 4vw;
+    margin-bottom: 1vw;
+}
+.curency_result{
+    font-size: 1vw;
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    background-color: black;
+    width: 38vw;
+    margin-bottom: 1vw;
+}
 .curency_description{
+    font-size: 1vw;
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    background-color: black;
+    width: 38vw;
+    text-align: justify;
+    padding: 0.3vw;
+}
+.curency_code{
     height: 47vw;
     width: 39vw;
-    
 }

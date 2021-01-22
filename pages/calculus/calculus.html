@@ -39,7 +39,7 @@
             </nav>
         </aside>
         <main>
-            <div id="clasic_block" class="calculus clasic active">
+            <div id="clasic_block" class="calculus clasic">
                 <div class="calculator">
                     <output></output>
                 </div>
@@ -52,19 +52,40 @@
                 </div>
             </div>
             <!-- /.clasic -->
-            <div id="curency_block" class="calculus curency">
+            <div id="curency_block" class="calculus curency active">
                 <div class="curency_list">
                     <div id="curency_chart">
 
                     </div>
                     <!-- /.curency_chart -->
                     <div class="curency_calculator">
-
+                        <form onsubmit="return false">
+                            <select name="curency" id="dropdown">
+                                <option>Выберите нужную монету здесь</option>
+                            </select>
+                            <input type="number" id="curence_get_number" placeholder="Напишите нужное количество">
+                            <select name="curency" id="dropdown_price">
+                                <option>Выберите нужную валюту для определения цены</option>
+                                <option value="usd">USD</option>
+                                <option value="uah">UAH</option>
+                                <option value="btc">BTC</option>
+                                <option value="eth">ETH</option>
+                            </select>
+                            <button class="curency_calculate" type="submit" onclick="getValue()">Вычислить</button>
+                        </form>
+                        <span class="curency_result">Pезультат вычеслений</span>
+                        <p class="curency_description">
+                            Данный калькулятор при загрузке страницы обращается на сервер Coingeco.com 
+                            используя их API, в ответ на запрос сервер присылает информацию о названии 
+                            монеты ее тикер и айди, после чего используя полученые айди калькулятор отправляет 
+                            новый запрос чтобы получить стоимость одной монеты в интересующей валюте. Затем
+                            калькулятор выдает пользователю запрашиваемый результат посчитав цену на стороне браузера.
+                        </p>
                     </div>
                     <!-- /.curency_calculator -->
                 </div>
                 <!-- /.curency_list -->
-                <div class="curency_description">
+                <div class="curency_code">
                 
                 </div>
                 <!-- /.curency_list -->

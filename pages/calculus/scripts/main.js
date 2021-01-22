@@ -70,13 +70,13 @@ percentAdd.addEventListener('click', function(e){
   /////////////////////////////////////////////////////////
 
   //////////////////класический калькулятор
-  const output = document.querySelector('output')
+  const output = document.querySelector('output')// доступ к аутпуту
 
-  const div = document.createElement('div')
-  div.classList.add('keyboard')
-  document.querySelector('.calculator').appendChild(div)
+  const div = document.createElement('div') //создаем див
+  div.classList.add('keyboard') //добавляем клас диву
+  document.querySelector('.calculator').appendChild(div)//вставляем в штмл
   
-  'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + 0 ( ) ='.split(' ')
+  'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + 0 ( ) ='.split(' ')//делим по пробелу
       .map(symbol => {
           div.insertAdjacentHTML('beforeend', `<button value="${symbol}">${symbol}</button>`)
       })
@@ -85,11 +85,11 @@ percentAdd.addEventListener('click', function(e){
       if(e.target.tagName === 'BUTTON') {
           calc(e.target.value)
       }
-  })
+  })//добаляем слушатель события
   
   document.addEventListener('keydown', e => {
       if ((e.key).match(/[0-9%\/*\-+\(\)=]|Backspace|Enter/)) calc(e.key)
-  })
+  })//добаляем слушатель события
   
   function calc(value) {
       if (value.match(/=|Enter/)) {
@@ -114,36 +114,11 @@ percentAdd.addEventListener('click', function(e){
       } else {
           output.textContent += value
       }
-  }
+  }//функция работы с калькулятором
+
 ////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////// работа с апи
-
-/* запрос на коин маркет кап апи
-
-                    // coinamrketcat api key - b41bb78d-89c9-4514-9f0a-d180b691d8f7
-
-                    let coinMarketCapKey = "b41bb78d-89c9-4514-9f0a-d180b691d8f7";
-
-                    request("GET", "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=" + coinMarketCapKey)//адрес запроса где взять данные и по какому ключу
-                    .then((r1) => {
-                        let parsing = JSON.parse(r1.target.responseText)// парсит джсон для работы с конкретным показателем
-                        console.log(parsing.data.quote.USD.total_market_cap);
-                    }).catch()
-
-
-                    function request(method, url) {
-                        return new Promise(function (resolve, reject) {
-                            let xhr = new XMLHttpRequest();
-                            xhr.open(method, url);
-                            xhr.onload = resolve;
-                            xhr.onerror = reject;
-                            xhr.send();
-                        });// что делать при запуске функции и в каких случаях
-                    };// функция запроса на апи сервер по методу и адресу из реквеста выше
-
-запрос на коин маркет кап апи*/
-
 
 // coingecko апи + создание карточек через цикл
 
@@ -159,9 +134,18 @@ request("GET", "https://api.coingecko.com/api/v3/coins/list")//адрес зап
         let curencyChart = document.getElementById('curency_chart');// доступ к елементу для вставки карточек
         let div = document.createElement('div');// создаем контейнер для карточки
 
+        let select = document.getElementById('dropdown')// доступ к выпадающему списку селект
+        let optionAdd = document.createElement('option');//создаем опшины
+        
+        div.id = coinId;//присваиваем айди созданым дивам
         div.className = "curency_card";//присваиваем клас созданым дивам
         div.innerHTML = `<h2> <b>Имя:</b> ${coinName} </h2> <span> <b>Тикер:</b> ${coinSymbol}</span>`// записываем внутрь карточки
-        curencyChart.append(div) // записываем в html по айди блока
+        curencyChart.append(div); // записываем в html по айди блока
+
+        optionAdd.value = coinId;//присваиваем vale созданым опшинам
+        optionAdd.innerHTML = `${coinSymbol}`;// записываем в опшины
+        select.append(optionAdd);// записываем в html по айди селекта
+
     }
 
 }).catch()
@@ -175,4 +159,40 @@ function request(method, url) {
         xhr.send();
     });// что делать при запуске функции и в каких случаях
 };// функция запроса на апи сервер по методу и адресу из реквеста выше
+
+////////////////////////////////////////
+// работа калькулятора
+
+
+// let formSubmit = document.getElementsByClassName("curency_calculate");
+// console.log(formSubmit);
+
+function getValue() {
+
+    let getCoin = document.getElementById("dropdown");//получаем доступ к полю
+    let getCoinValue = getCoin.value;//получаем значения для испльзования в апи в качестве айди
+
+    let getNumber = document.getElementById("curence_get_number");//получаем доступ к полю
+    let getNumberValue = getNumber.value;//получаем количество монет
+
+    let getPrice = document.getElementById("dropdown_price");//получаем доступ к полю
+    let getPriceValue = getPrice.value;//получаем начения для испльзования в апи в качестве айди
+
+    request("GET", "https://api.coingecko.com/api/v3/simple/price?ids=`${getCoinValue}`&vs_currencies=`${getPriceValue}`")
+    .then((coin) => {
+        console.log(coin);
+        let coinParsing = JSON.parse(coin.target.responseText)// парсит джсон для работы с js обьектом
+        console.log(coinParsing);
+    }).catch();
+
+    function request(method, url) {
+        return new Promise(function (resolve, reject) {
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.onload = resolve;
+            xhr.onerror = reject;
+            xhr.send();
+        });// что делать при запуске функции и в каких случаях
+    };
+};
 
