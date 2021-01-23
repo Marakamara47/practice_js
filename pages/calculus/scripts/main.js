@@ -67,7 +67,7 @@ percentAdd.addEventListener('click', function(e){
         percentCalculus.classList.add('active');
     };
   });
-  /////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //////////////////класический калькулятор
   const output = document.querySelector('output')// доступ к аутпуту
@@ -116,7 +116,7 @@ percentAdd.addEventListener('click', function(e){
       }
   }//функция работы с калькулятором
 
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////// работа с апи
 
@@ -160,9 +160,8 @@ function request(method, url) {
     });// что делать при запуске функции и в каких случаях
 };// функция запроса на апи сервер по методу и адресу из реквеста выше
 
-////////////////////////////////////////
-// работа калькулятора
-
+// работа калькулятора валют
+ 
 function getValue() {
 
     let getCoin = document.getElementById("dropdown");//получаем доступ к полю
@@ -183,3 +182,50 @@ function getValue() {
     }).catch();
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//процентный калькулятор
+
+function calculate() {
+    let percentInput = document.getElementById("percent_input");// доступ к полю с искомым значением
+    let percentInputValue = percentInput.value;// нужное количество процентов
+
+    let percentGetNumber = document.getElementById("percent_get_number");// доступ к полю откуда считать искомое
+    let percentGetNumberValue = percentGetNumber.value;// цифра от которой считать процент
+
+    let percentDropdown = document.getElementById("percent_type");// доступ к списку режимов
+    let percentDropdownValue = percentDropdown.value;// режим работы калькулятора
+
+    let percentResultPrint = document.getElementById("percent_result");// доступ к полю для вывода результата
+    
+    if (percentInputValue > 0 && percentGetNumberValue > 0) {// проверка больше ли нуля наши значения
+        switch (percentDropdownValue) {//условие на выбраный режим для калькулятора
+            case "0"://сработает если не выбран режим
+                alert('Ой, похоже вы не выбрали нужный режим.');
+                break;
+            case "1":// Процент составляет от числа
+                let percentResult_1 = percentGetNumberValue * percentInputValue / 100;
+                percentResultPrint.innerHTML = percentResult_1;
+                break;
+            case "2":// Сколько прoцентов составляет число
+                let percentResult_2 = percentInputValue / percentGetNumberValue * 100;
+                percentResultPrint.innerHTML = percentResult_2;
+                break;
+            case "3":// Прибавить процент к числу
+                let percentResult_3 = ((percentGetNumberValue / 100)*percentInputValue) + Number(percentGetNumberValue);
+                percentResultPrint.innerHTML = percentResult_3;
+                break;
+            case "4"://Вычесть процент из числа
+                let percentResult_4 = Number(percentGetNumberValue) - ((percentGetNumberValue / 100)*percentInputValue);
+                percentResultPrint.innerHTML = percentResult_4;
+                break;
+            default: // на случай непредвиденых ошибок
+                alert("Ой, что-то пошло не по плану. Проверьте введеные данные");
+                break;
+        };
+    }else{//сработает если значения меньше или равны нулю
+        alert("Введеные цифры должны быть больше нуля.");
+    };
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    

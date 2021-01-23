@@ -40,19 +40,75 @@
         </aside>
         <main>
             <div id="clasic_block" class="calculus clasic">
-                <div class="calculator">
-                    <output></output>
-                </div>
-                <div class="calculator_description">
-                    <h3>Класический калькулятор</h3>
+                <div class="calc_block"> 
+                    <div class="calculator">
+                        <output></output>
+                    </div>
+                    <div class="calculator_description">
+                        <h3>Класический калькулятор</h3>
                     <p>Данный калькулятор написан на нативном JavaScript, вcе его HTML елементы 
-                        генерируются програмно и стилизуютя вручную используя CSS, для выполнения
-                        расчетов используется подключаемая библиотека math.js 
+                        генерируются программно и стилизуются вручную используя CSS, для выполнения
+                        расчетов используется подключаемая библиотека math.js.
                     </p>
+                    </div>
+                </div>
+                
+                <div class="calculator_code">
+                    <pre>
+----------------Калькулятор
+
+const output = document.querySelector('output')
+
+const div = document.createElement('div')
+div.classList.add('keyboard')
+document.querySelector('.calculator').appendChild(div)
+
+'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + 0 ( ) ='.split(' ')
+    .map(symbol => {
+        div.insertAdjacentHTML('beforeend', `&ltbutton value="${symbol}"
+        >${symbol}&lt/button>`)
+    })
+
+div.addEventListener('click', e => {
+    if(e.target.tagName === 'BUTTON') {
+        calc(e.target.value)
+    }
+})
+
+document.addEventListener('keydown', e => {
+    if ((e.key).match(/[0-9%\/*\-+\(\)=]|Backspace|Enter/)) calc(e.key)
+})
+
+function calc(value) {
+    if (value.match(/=|Enter/)) {
+        try {
+            if (output.textContent !== '') {
+                output.textContent = Math.trunc(math.evaluate(output.textContent))
+            }
+        } catch {
+            let oldValue = output.textContent
+            let newValue = 'недопустимое выражение'
+
+            output.textContent = newValue
+            const timer = setTimeout(() => {
+                output.textContent = oldValue
+                clearTimeout(timer)
+            }, 1500)
+        }
+    } else if (value === 'C') {
+        output.textContent = ''
+    } else if (value.match(/CE|Backspace/)) {
+        output.textContent = output.textContent.substring
+        (0, output.textContent.length - 1)
+    } else {
+        output.textContent += value
+    }
+}
+                    </pre>
                 </div>
             </div>
             <!-- /.clasic -->
-            <div id="curency_block" class="calculus curency active">
+            <div id="curency_block" class="calculus curency">
                 <div class="curency_list">
                     <div id="curency_chart">
 
@@ -75,10 +131,10 @@
                         <span id="curency_result">Pезультат вычеслений</span>
                         <p class="curency_description">
                             Данный калькулятор при загрузке страницы обращается на сервер Coingeco.com 
-                            используя их API, в ответ на запрос сервер присылает информацию о названии 
-                            монеты ее тикер и айди, после чего используя полученые айди калькулятор отправляет 
-                            новый запрос чтобы получить стоимость одной монеты в интересующей валюте. Затем
-                            калькулятор выдает пользователю запрашиваемый результат посчитав цену на стороне браузера.
+                            используя их API, в ответ на запрос сервер присылает информацию о названии монеты 
+                            ее тикер и айди, после чего используя полученные айди калькулятор отправляет новый запрос, 
+                            чтобы получить стоимость одной монеты в интересующей валюте. Затем калькулятор выдает пользователю 
+                            запрашиваемый результат посчитав цену на стороне браузера.
                         </p>
                     </div>
                     <!-- /.curency_calculator -->
@@ -152,7 +208,94 @@ function getValue() {
                 <!-- /.curency_list -->
             </div>
             <!-- /.curency -->
-            <div id="percent_block" class="calculus percent"></div>
+            <div id="percent_block" class="calculus percent active">
+                <div class="percent_calculator">
+                    <div class="calculator_form">
+                        <form id="percent_form" onsubmit="return false">
+                            <select name="percent_type" id="percent_type">
+                                <option value="0">Выберите нужный режим:</option>
+                                <option value="1">Процент составляет от числа</option>
+                                <option value="2">Сколько прoцентов составляет число</option>
+                                <option value="3">Прибавить процент к числу</option>
+                                <option value="4">Вычесть процент из числа</option>
+                            </select>
+                            <input type="number" placeholder="Искомое значение" id="percent_input">
+                            <input type="number" placeholder="Число" id="percent_get_number">
+                            <span id="percent_result">Результат</span>
+                            <button id="percent_calculate" onclick="calculate()">Посчитать</button>
+                        </form>
+                    </div>
+                    <!-- /.calculator_form -->
+                    <div class="calculator_form_description">
+                        <p>Данный калькулятор занимается подсчетами в 4 режимах. 
+                            Функция Джаваскрипт обращается к дом элементам и берет вводимые пользователем значения, 
+                            после чего она проверяет больше ли они нуля, на следующем этапе функция проверяет выбран 
+                            ли режим в выпадающем списке, если все условия соблюдены то функция проведет соответствующие 
+                            расчеты и запишет результат на страницу. Если в ходе исполнения сценария пользователь совершит ошибки, 
+                            то система выведет предупреждение в окно браузера.
+                        </p>
+                    </div>
+                </div>
+                <!-- /.percent_calculator -->
+                <div class="percent_description">
+                    <pre>
+----------------Процентный калькулятор
+
+function calculate() {
+
+let percentInput = document.getElementById("percent_input");
+let percentInputValue = percentInput.value;
+
+let percentGetNumber = document.getElementById("percent_get_number");
+let percentGetNumberValue = percentGetNumber.value;
+
+let percentDropdown = document.getElementById("percent_type");
+let percentDropdownValue = percentDropdown.value;
+
+let percentResultPrint = document.getElementById("percent_result");
+
+if (percentInputValue > 0 && percentGetNumberValue > 0) {
+    switch (percentDropdownValue) {
+
+        case "0":
+            alert('Ой, похоже вы не выбрали нужный режим.');
+            break;
+
+        case "1":
+            let percentResult_1 = percentGetNumberValue * percentInputValue / 100;
+            percentResultPrint.innerHTML = percentResult_1;
+            break;
+
+        case "2":
+            let percentResult_2 = percentInputValue / percentGetNumberValue * 100;
+            percentResultPrint.innerHTML = percentResult_2;
+            break;
+
+        case "3":
+            let percentResult_3 = ((percentGetNumberValue / 100)*percentInputValue)
+                                        + Number(percentGetNumberValue);
+            percentResultPrint.innerHTML = percentResult_3;
+            break;
+
+        case "4":
+            let percentResult_4 = Number(percentGetNumberValue) ;
+                                - ((percentGetNumberValue / 100)*percentInputValue);
+            percentResultPrint.innerHTML = percentResult_4;
+            break;
+
+        default: 
+            alert("Ой, что-то пошло не по плану. Проверьте введеные данные");
+            break;
+    };
+}else{
+    alert("Введеные цифры должны быть больше нуля.");
+};
+
+};
+                    </pre>
+                </div>
+                <!-- /.percent_description -->
+            </div>
             <!-- /.percent -->
         </main>
     </div>

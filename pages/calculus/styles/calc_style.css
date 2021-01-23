@@ -54,10 +54,6 @@ main{
     background-color: black;
     border-radius: 20px;
 }
-
-.percent{
-    background-color: pink;
-}
 .calculus{
     display: none;
     justify-content: space-around;
@@ -109,6 +105,28 @@ button {
     font-weight: bold;
     color: greenyellow;
     background-color: black;
+}
+
+.calc_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: inherit;
+}
+.calculator_code{
+    height: 47vw;
+    width: 39vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    padding: 0.5vw;
+}
+.calculator_code > pre{
+    width: 35vw;
+    font-size: 0.7vw;
 }
 .calculator_description{
     display: flex;
@@ -193,7 +211,7 @@ form{
     justify-content: center;
     align-items: center;
 }
-#dropdown, #dropdown_price{
+#dropdown, #dropdown_price, #percent_type{
     font-size: 1vw;
     border: 2px solid greenyellow;
     border-radius: 5px;
@@ -215,7 +233,6 @@ form{
 #curence_get_number::-webkit-input-placeholder { 
     color: greenyellow; 
 }
-#dropdown_price{}
 .curency_calculate{
     border: 2px solid greenyellow;
     border-radius: 10px;
@@ -252,4 +269,146 @@ form{
 .curency_code > pre{
     width: 35vw;
     font-size: 0.7vw;
+}
+
+/* percent */
+
+.percent_calculator, .percent_description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    height: 47vw;
+    width: 39vw;
+}
+.percent_calculator{
+    border: none;
+}
+.calculator_form{
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    padding: 0.5vw;
+}
+#percent_form{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#percent_input, #percent_get_number, #percent_result{
+    color: greenyellow;
+    background-color: black;
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    width: 38vw;
+    margin-bottom: 1vw;
+}
+#percent_input::-webkit-input-placeholder { 
+    color: greenyellow; 
+}
+#percent_get_number::-webkit-input-placeholder { 
+    color: greenyellow; 
+}
+#percent_calculate{
+    border: 2px solid greenyellow;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    height: auto;
+    width: 7vw;
+}
+.calculator_form_description{
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    padding: 0.5vw;
+    text-align: justify;
+    font-size: 1.4vw;
+}
+.percent_description > pre{
+    width: 35vw;
+    font-size: 0.7vw;
+}
+
+/* media */
+@media (max-width : 768px){
+    aside {
+        height: auto;
+    }
+    main{
+        width: auto;
+        height: auto;
+    }
+    /* clasic */
+    .calculus {
+        flex-direction: column;
+        width: 82vw;
+        height: auto;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+    }
+    .calc_block {
+        flex-direction: row;
+        width: 82vw;
+        padding-bottom: 2vw;
+    }
+    .calculator {
+        width: 24vw;
+        height: 29vw;
+        border: 2px solid greenyellow;
+        border-radius: 5px;
+    }
+    output {
+        font-size: 1vw;
+        border: 2px solid greenyellow;
+    }
+    .calculator_code {
+        justify-content: flex-start;
+        height: auto;
+        width: 69vw;
+    }
+    .calculator_code > pre {
+        font-size: 1.3vw;
+    }
+    /* /clasic */
+    /* curency */
+    .curency_list {
+        height: auto;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2vw;
+    }
+    .curency_calculator {
+        height: auto;
+        padding: 1vw 0;
+    }
+    .curency_code {
+        justify-content: flex-start;
+        height: auto;
+        width: 80vw;
+    }
+    .curency_code > pre {
+        width: 35vw;
+        font-size: 1.4vw;
+    }
+    /* /curency */
+    /* percent */
+    .percent_calculator, .percent_description {
+        height: auto;
+        width: 80vw;
+    }
+    .percent_calculator{
+        margin-bottom: 1vw;
+    }
+    .calculator_form {
+        margin-bottom: 1vw;
+    }
+    #percent_input, #percent_get_number, #percent_result, #percent_type  {
+        width: 76vw;
+    }
+    .percent_description > pre {
+        width: auto;
+        font-size: 1.3vw;
+        padding: 1vw 0;
+    }
 }
