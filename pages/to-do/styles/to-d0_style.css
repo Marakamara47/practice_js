@@ -1,0 +1,128 @@
+body{
+  background-color: lightgray;
+  color: greenyellow;
+}
+.primary_container{
+  font-family: 'Roboto';
+  padding: 1vw 1vw;
+  display: flex;
+}
+
+/* aside/navigation */
+aside{
+  width: 15vw;
+  height: 49vw;
+  background-color: black;
+  border-radius: 20px;
+  margin-right: 1vw;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2vw;
+}
+.local_navigation{
+    margin-bottom: 5vw;
+}
+h2{
+  font-size: 1.5vw;
+  padding-bottom: 1vw;
+}
+li{
+  padding-bottom: 0.5vw;
+}
+a{
+  font-size: 1vw;
+  color: greenyellow;
+}
+.nav_button{
+  font-size: 1vw;
+  color: greenyellow;
+  background-color: inherit;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+/* main */
+main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 82vw;
+  height: 49vw;
+  background-color: black;
+  border-radius: 20px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 38vw;
+  padding: 1vw;
+  height: inherit;
+}
+.todo_list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: inherit;
+  height: 35vw;
+}
+.todo_list > h1{
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 38vw;
+  padding: 1vw;
+  overflow: auto;
+}
+.todo{
+  overflow: auto;
+}
+.todo::-webkit-scrollbar{
+  width: 0.8vw;
+}
+.todo::-webkit-scrollbar-track{
+  background-color: black;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+}
+.todo::-webkit-scrollbar-thumb{
+  background: greenyellow;
+  border-radius: 5px;
+}
+.message{
+  width: 34vw;
+  background-color: black;
+  border: 2px solid greenyellow;
+  border-radius: 0.5vw;
+  color: greenyellow;
+  text-indent: 1vw;
+}
+.add{
+  background-color: black;
+  color: greenyellow;
+  border: 2px solid greenyellow;
+  border-radius: 0.5vw;
+  padding: 0 0.3vw;
+}
+.todo_description > p{
+  padding: 0.5vw;
+  border: 2px solid greenyellow;
+  border-radius: 1vw;
+  font-size: 1.2vw;
+}
+.important{
+  color: red;
+  text-decoration: underline;
+}
+.todo_code > pre{
+  width: 35vw;
+  font-size: 0.7vw;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+        <!-- links -->
+    <link rel="stylesheet" href="../../styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/to-d0_style.css">
+</head>
+<body>
+    <div class="primary_container">
+        <aside>
+            <nav>
+                <div class="local_navigation">
+                    <h2>To-do list</h2>
+                </div>
+                <!-- /.local_navigation -->
+                <div class="global_navigation">
+                    <h2>Глобальное меню</h2>
+                    <ul>
+                        <li><a href="../../index.html">Главная страница</a></li>
+                        <li><a href="../calculus/calculus.html">Калькуляторы</a></li>
+                        <li><a href="to-do.html">To-do list</a></li>
+                        <li><a href="#">Игры</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">React</a></li>
+                    </ul>
+                </div>
+                <!-- /.global_navigation -->
+            </nav>
+        </aside>
+        <main>
+            <div class="container left">
+                <div class="todo_list">
+                     <h1>ToDo list</h1>
+                    <div class="create_new_todo">
+                        <input type="text" class="message" placeholder="Описание">
+                        <button class="add">Добавить</button>
+                    </div>
+                    <div class="wrapper">
+                        <ul class="todo"></ul>
+                    </div>
+                </div>
+                <div class="todo_description">
+                    <p>
+                        На данной странице размещён список дел написанный на нативном JS. 
+                        После ввода данных в поле и подтверждения кнопкой скрипт записывает данные в массив, 
+                        после чего добавляет их в локальное хранилище в браузере, затем он использует эти данные 
+                        каждый раз при загрузке страницы. Так же записываться пометки в списке.
+                        <br>
+                        <br>
+                        Команды управления:
+                        <br>
+                        - Нажатие правой кнопки на пункт задач отмечает этот пункт как важный.
+                        <br>
+                        - Нажатие правой кнопки с зажатым ctrl удаляет пункт из списка.
+                    </p>
+                </div>
+                <!-- /.todo_description -->
+            </div>
+            <!-- /.container_left -->
+            <div class="container todo_code">
+<pre>
+let addMassage = document.querySelector(".message");
+let addButton = document.querySelector(".add");
+let todo = document.querySelector(".todo");
+let todoList = [];
+
+if (localStorage.getItem("todo")) {
+    todoList = JSON.parse(localStorage.getItem("todo"));
+    displayMassages();
+};
+
+addButton.addEventListener("click", function () {
+    if (!addMassage.value) {
+        return;
+    }; 
+    let newTodo = {
+        todo: addMassage.value,
+        checked: false,
+        important: false
+    };
+    todoList.push(newTodo);
+    displayMassages();
+    localStorage.setItem("todo",JSON.stringify(todoList));
+    addMassage.value = "";
+});
+
+function displayMassages() {
+    let displayMassage = "";
+    if (todoList.length === 0) {
+        todo.innerHTML = "";
+    }
+    todoList.forEach(function (item, i) {
+        displayMassage += `
+            &ltli>
+                &ltinput type="checkbox" id="item_${i}" 
+                                ${item.checked ? "checked" : ' '}>
+                &ltlabel for="item_${i}" class="${item.important ? "important" : " "}"
+                                    >${item.todo}&lt/label>
+            &lt/li>`;
+        todo.innerHTML = displayMassage;
+    });
+};
+
+todo.addEventListener("change", function (event) {
+    let idInput = event.target.getAttribute("id");
+    let forLabel = todo.querySelector("[for="+idInput+"]");
+    let valueLabel = forLabel.innerHTML;
+    todoList.forEach(function (item) {
+        if (item.todo === valueLabel) {
+            item.checked = !item.checked;
+            localStorage.setItem("todo",JSON.stringify(todoList));
+        };
+    });
+});
+
+todo.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+    todoList.forEach(function (item, i) {
+        if (item.todo === event.target.innerHTML) {
+            if (event.ctrlKey) {
+                todoList.splice(i, 1);
+            }else{
+                item.important = !item.important;
+            };
+            displayMassages();
+            localStorage.setItem("todo",JSON.stringify(todoList));
+        };
+    });
+});
+</pre>
+            </div>
+            <!-- /.container_right -->
+        </main>
+    </div>
+    <!-- /.wraper -->
+        <!-- main scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
