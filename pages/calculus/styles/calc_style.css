@@ -1,5 +1,5 @@
 body{
-    background-color: lightgray;
+    background-color: black;
     color: greenyellow;
 }
 .wrapper{
@@ -15,6 +15,7 @@ aside{
     background-color: black;
     border-radius: 20px;
     margin-right: 1vw;
+    border: 2px solid greenyellow;
 }
 nav{
     display: flex;
@@ -53,6 +54,7 @@ main{
     height: 49vw;
     background-color: black;
     border-radius: 20px;
+    border: 2px solid greenyellow;
 }
 .calculus{
     display: none;

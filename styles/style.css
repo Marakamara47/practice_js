@@ -1,26 +1,38 @@
 
+body{
+    background-color: black;
+}
 .wrapper{
     font-family: 'Roboto';
-    padding: 2.6vw 10vw;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    background-color: lightgray;
+    padding: 1vw;
 }
 .card{
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25vw;
-    height: 20vw;
-    margin-bottom: 3vw;
+    text-align: center;
+    width: 32vw;
+    height: 49vw;
+    border: 1px solid greenyellow;
     border-radius: 50px;
 }
 a{
     color: greenyellow;
 }
-p{
+.block_title{
+    font-size: 2vw;
+    font-weight: bold;
+    margin-bottom: 1vw;
+}
+.block_description, .page_description{
     font-size: 1vw;
-    text-align: center;
+    padding: 0 1vw;
+    margin-bottom: 2vw;
+}
+.page_title{
+    font-size: 2vw;
+    margin-bottom: 1vw;
 }
