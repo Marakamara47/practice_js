@@ -213,3 +213,4 @@ let startBtn = document.querySelector(".breakout_start");
 startBtn.addEventListener("click",() => {
     let interval = setInterval(draw, 12);//вызов функции с интервалом
 });//запуск игры на кнопку
+//////////////////////////////////////////////////////////////////////////////////////
