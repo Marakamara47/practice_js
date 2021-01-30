@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+        <!-- links -->
+    <link rel="stylesheet" href="../../styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/games-style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside>
+            <nav>
+                <div class="local_navigation">
+                    <h2>Игры</h2>
+                    <ul>
+                        <li><button id="breakout" class="nav_button">Игра Выбивной</button></li>
+                        <li><button id="snake" class="nav_button">Игра Змейка</button></li>
+                    </ul>
+                </div>
+                <!-- /.local_navigation -->
+                <div class="global_navigation">
+                    <h2>Глобальное меню</h2>
+                    <ul>
+                        <li><a href="../../index.html">Главная страница</a></li>
+                        <li><a href="../calculus/calculus.html">Калькуляторы</a></li>
+                        <li><a href="../to-do/to-do.html">To-do list</a></li>
+                        <li><a href="games.html">Игры</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">React</a></li>
+                    </ul>
+                </div>
+                <!-- /.global_navigation -->
+            </nav>
+        </aside>
+        <main>
+            <div id="breakout_block" class="game active">
+                <div class="game_block">
+                    <canvas id="breakout_canvas" width="480" height="320"></canvas>
+                    <button type="submit" class="breakout_start">Start</button>
+                    <p class="game_subscription">
+                        На этой странице размещена игра Выбивной.
+                        Для начала игры нажмите кнопку старт, для управления 
+                        используйте стрелочки на клавиатуре. 
+                        <br>
+                        Игра сделана на нативном JS внутри элемента Canvas, частота прорисовки 
+                        кадров выставлена в интервале 12 миллисекунд. Игра в работе опирается на координаты Х и У,
+                        например когда мяч ударяется от чего-то то координата направления меняется на противоположную 
+                        в зависимости от того по Х или У произошло столкновение.
+                    </p>
+                </div>
+                <!-- /.game_block -->
+                <div class="code_block">
+                    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js" data-user="marakamara47" data-slug-hash="oNYNmdR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="breakout">
+                        <span>See the Pen <a href="https://codepen.io/marakamara47/pen/oNYNmdR">
+                        breakout</a> by Marakamara47 (<a href="https://codepen.io/marakamara47">@marakamara47</a>)
+                        on <a href="https://codepen.io">CodePen</a>.</span>
+                      </p>
+                      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+                </div>
+                <!-- /.code_block -->
+            </div>
+            <!-- /#breakout_block -->
+            <div id="snake_block" class="game">
+                
+            </div>
+            <!-- /#snake_block -->
+        </main>
+    </div>
+    <!-- /.wrapper -->
+        <!-- main scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
