@@ -1,42 +1,42 @@
 /////////////////сворачивание и розворачивание по нажатию кнопок
 // breakout
-let  breakoutPageBtn = document.getElementById('breakout');
-let breakoutPageBlock = document.getElementById('breakout_block');
+// let  breakoutPageBtn = document.getElementById('breakout');
+// let breakoutPageBlock = document.getElementById('breakout_block');
 
-breakoutPageBtn.addEventListener('click', function(e){
-    e.preventDefault();
+// breakoutPageBtn.addEventListener('click', function(e){
+//     e.preventDefault();
 
-    // remove
-    if(snakePageBlock.classList.contains('active')) {
-        snakePageBlock.classList.remove('active');
-    };
+//     // remove
+//     if(snakePageBlock.classList.contains('active')) {
+//         snakePageBlock.classList.remove('active');
+//     };
 
-    // add
-    if(breakoutPageBlock.classList.contains('active')) {
-        breakoutPageBlock.classList.remove('active');
-      }else {
-        breakoutPageBlock.classList.add('active');
-    };
-  });
+//     // add
+//     if(breakoutPageBlock.classList.contains('active')) {
+//         breakoutPageBlock.classList.remove('active');
+//       }else {
+//         breakoutPageBlock.classList.add('active');
+//     };
+//   });
 
 // snake
-let snakePageBtn = document.getElementById('snake');
-let snakePageBlock = document.getElementById('snake_block');
+// let snakePageBtn = document.getElementById('snake');
+// let snakePageBlock = document.getElementById('snake_block');
 
-snakePageBtn.addEventListener('click', function(e){
-    e.preventDefault();
+// snakePageBtn.addEventListener('click', function(e){
+//     e.preventDefault();
 
-    // remove
-    if(breakoutPageBlock.classList.contains('active')) {
-        breakoutPageBlock.classList.remove('active');
-    };
-    // add
-    if(snakePageBlock.classList.contains('active')) {
-        snakePageBlock.classList.remove('active');
-      }else {
-        snakePageBlock.classList.add('active');
-    }
-  });
+//     // remove
+//     if(breakoutPageBlock.classList.contains('active')) {
+//         breakoutPageBlock.classList.remove('active');
+//     };
+//     // add
+//     if(snakePageBlock.classList.contains('active')) {
+//         snakePageBlock.classList.remove('active');
+//       }else {
+//         snakePageBlock.classList.add('active');
+//     }
+//   });
 //////////////////////////////////////////////////////////////////////////////////
 //breakout
 
