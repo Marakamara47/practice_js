@@ -120,13 +120,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid greenyellow;
-    border-radius: 10px;
-    padding: 0.5vw;
-}
-.calculator_code > pre{
-    width: 35vw;
-    font-size: 0.7vw;
 }
 .calculator_description{
     display: flex;
@@ -261,14 +254,6 @@ form{
     width: 39vw;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: 2px solid greenyellow;
-    border-radius: 10px;
-    padding: 0.5vw;
-}
-.curency_code > pre{
-    width: 35vw;
-    font-size: 0.7vw;
 }
 
 /* percent */
@@ -324,11 +309,10 @@ form{
     text-align: justify;
     font-size: 1.4vw;
 }
-.percent_description > pre{
-    width: 35vw;
-    font-size: 0.7vw;
+.cp_embed_iframe {
+    width: 39vw !important;
+    height: 47vw;
 }
-
 /* media */
 @media (max-width : 768px){
     aside {
@@ -405,10 +389,5 @@ form{
     }
     #percent_input, #percent_get_number, #percent_result, #percent_type  {
         width: 76vw;
-    }
-    .percent_description > pre {
-        width: auto;
-        font-size: 1.3vw;
-        padding: 1vw 0;
     }
 }

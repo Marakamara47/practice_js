@@ -29,7 +29,7 @@
                         <li><a href="../../index.html">Главная страница</a></li>
                         <li><a href="calculus.html">Калькуляторы</a></li>
                         <li><a href="../to-do/to-do.html">To-do list</a></li>
-                        <li><a href="#">Игры</a></li>
+                        <li><a href="../games/games.html">Игры</a></li>
                         <li><a href="#">API</a></li>
                         <li><a href="#">E-commerce</a></li>
                         <li><a href="#">React</a></li>
@@ -54,57 +54,12 @@
                 </div>
                 
                 <div class="calculator_code">
-                    <pre>
-----------------Калькулятор
-
-const output = document.querySelector('output')
-
-const div = document.createElement('div')
-div.classList.add('keyboard')
-document.querySelector('.calculator').appendChild(div)
-
-'C CE % / 7 8 9 * 4 5 6 - 1 2 3 + 0 ( ) ='.split(' ')
-    .map(symbol => {
-        div.insertAdjacentHTML('beforeend', `&ltbutton value="${symbol}"
-        >${symbol}&lt/button>`)
-    })
-
-div.addEventListener('click', e => {
-    if(e.target.tagName === 'BUTTON') {
-        calc(e.target.value)
-    }
-})
-
-document.addEventListener('keydown', e => {
-    if ((e.key).match(/[0-9%\/*\-+\(\)=]|Backspace|Enter/)) calc(e.key)
-})
-
-function calc(value) {
-    if (value.match(/=|Enter/)) {
-        try {
-            if (output.textContent !== '') {
-                output.textContent = Math.trunc(math.evaluate(output.textContent))
-            }
-        } catch {
-            let oldValue = output.textContent
-            let newValue = 'недопустимое выражение'
-
-            output.textContent = newValue
-            const timer = setTimeout(() => {
-                output.textContent = oldValue
-                clearTimeout(timer)
-            }, 1500)
-        }
-    } else if (value === 'C') {
-        output.textContent = ''
-    } else if (value.match(/CE|Backspace/)) {
-        output.textContent = output.textContent.substring
-        (0, output.textContent.length - 1)
-    } else {
-        output.textContent += value
-    }
-}
-                    </pre>
+                    <p class="codepen" data-height="304" data-theme-id="dark" data-default-tab="js" data-user="marakamara47" data-slug-hash="WNoNWrm" style="height: 304px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="calc_clasic">
+                        <span>See the Pen <a href="https://codepen.io/marakamara47/pen/WNoNWrm">
+                        calc_clasic</a> by Marakamara47 (<a href="https://codepen.io/marakamara47">@marakamara47</a>)
+                        on <a href="https://codepen.io">CodePen</a>.</span>
+                      </p>
+                      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
                 </div>
             </div>
             <!-- /.clasic -->
@@ -141,69 +96,12 @@ function calc(value) {
                 </div>
                 <!-- /.curency_list -->
                 <div class="curency_code">
-                    <pre>
-----------------coingecko апи + создание карточек через цикл
-
-request("GET", "https://api.coingecko.com/api/v3/coins/list")
-.then((geko) => {
-    let gekoParsing = JSON.parse(geko.target.responseText)
-
-    for (let i = 0; i &lt= gekoParsing.length; i++) {
-        let coinName = gekoParsing[i].name;
-        let coinSymbol = gekoParsing[i].symbol;
-        let coinId = gekoParsing[i].id;
-        let curencyChart = document.getElementById('curency_chart');
-        let div = document.createElement('div');
-
-        let select = document.getElementById('dropdown');
-        let optionAdd = document.createElement('option');
-        
-        div.id = coinId;
-        div.className = "curency_card";
-        div.innerHTML = `&lth2> &ltb>Имя:&lt/b> ${coinName} &lt/h2> 
-        &ltspan> &ltb>Тикер:&lt/b> ${coinSymbol}&lt/span>`
-
-        curencyChart.append(div);
-
-        optionAdd.value = coinId;
-        optionAdd.innerHTML = `${coinSymbol}`;
-        select.append(optionAdd);
-    }
-}).catch()
-
-function request(method, url) {
-    return new Promise(function (resolve, reject) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        xhr.onload = resolve;
-        xhr.onerror = reject;
-        xhr.send();
-    });
-};
-
-----------------работа калькулятора
-
-function getValue() {
-
-    let getCoin = document.getElementById("dropdown");
-    let getCoinValue = getCoin.value;
-
-    let getNumber = document.getElementById("curence_get_number");
-    let getNumberValue = getNumber.value;
-
-    let getPrice = document.getElementById("dropdown_price");
-    let getPriceValue = getPrice.value;
-
-    request("GET", "https://api.coingecko.com/api/v3/simple/price?ids="
-    +getCoinValue+"&vs_currencies="+getPriceValue)
-    .then((coin) => {
-
-        let coinParsing = JSON.parse(coin.target.responseText)     
-        let curencyResult = getNumberValue*coinParsing[getCoinValue][getPriceValue];
-        document.getElementById("curency_result").innerHTML = curencyResult;
-    }).catch();
-};
-                    </pre>
+                    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js" data-user="marakamara47" data-slug-hash="abBbxJp" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="calc_curency">
+                        <span>See the Pen <a href="https://codepen.io/marakamara47/pen/abBbxJp">
+                        calc_curency</a> by Marakamara47 (<a href="https://codepen.io/marakamara47">@marakamara47</a>)
+                        on <a href="https://codepen.io">CodePen</a>.</span>
+                      </p>
+                      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
                 </div>
                 <!-- /.curency_list -->
             </div>
@@ -238,61 +136,12 @@ function getValue() {
                 </div>
                 <!-- /.percent_calculator -->
                 <div class="percent_description">
-                    <pre>
-----------------Процентный калькулятор
-
-function calculate() {
-
-let percentInput = document.getElementById("percent_input");
-let percentInputValue = percentInput.value;
-
-let percentGetNumber = document.getElementById("percent_get_number");
-let percentGetNumberValue = percentGetNumber.value;
-
-let percentDropdown = document.getElementById("percent_type");
-let percentDropdownValue = percentDropdown.value;
-
-let percentResultPrint = document.getElementById("percent_result");
-
-if (percentInputValue > 0 && percentGetNumberValue > 0) {
-    switch (percentDropdownValue) {
-
-        case "0":
-            alert('Ой, похоже вы не выбрали нужный режим.');
-            break;
-
-        case "1":
-            let percentResult_1 = percentGetNumberValue * percentInputValue / 100;
-            percentResultPrint.innerHTML = percentResult_1;
-            break;
-
-        case "2":
-            let percentResult_2 = percentInputValue / percentGetNumberValue * 100;
-            percentResultPrint.innerHTML = percentResult_2;
-            break;
-
-        case "3":
-            let percentResult_3 = ((percentGetNumberValue / 100)*percentInputValue)
-                                        + Number(percentGetNumberValue);
-            percentResultPrint.innerHTML = percentResult_3;
-            break;
-
-        case "4":
-            let percentResult_4 = Number(percentGetNumberValue) ;
-                                - ((percentGetNumberValue / 100)*percentInputValue);
-            percentResultPrint.innerHTML = percentResult_4;
-            break;
-
-        default: 
-            alert("Ой, что-то пошло не по плану. Проверьте введеные данные");
-            break;
-    };
-}else{
-    alert("Введеные цифры должны быть больше нуля.");
-};
-
-};
-                    </pre>
+                    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js" data-user="marakamara47" data-slug-hash="abBbxEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="calc_percent">
+                        <span>See the Pen <a href="https://codepen.io/marakamara47/pen/abBbxEW">
+                        calc_percent</a> by Marakamara47 (<a href="https://codepen.io/marakamara47">@marakamara47</a>)
+                        on <a href="https://codepen.io">CodePen</a>.</span>
+                      </p>
+                      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
                 </div>
                 <!-- /.percent_description -->
             </div>

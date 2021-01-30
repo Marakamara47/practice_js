@@ -1,0 +1,102 @@
+body{
+    background-color: lightgray;
+    color: greenyellow;
+}
+.wrapper{
+    font-family: 'Roboto';
+    padding: 1vw 1vw;
+    display: flex;
+}
+
+/* aside/navigation */
+aside{
+    width: 15vw;
+    height: 49vw;
+    background-color: black;
+    border-radius: 20px;
+    margin-right: 1vw;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2vw;
+}
+.local_navigation{
+    margin-bottom: 5vw;
+}
+h2{
+    font-size: 1.5vw;
+    padding-bottom: 1vw;
+}
+li{
+    padding-bottom: 0.5vw;
+}
+a{
+    font-size: 1vw;
+    color: greenyellow;
+}
+.nav_button{
+    font-size: 1vw;
+    color: greenyellow;
+    background-color: inherit;
+    margin: 0;
+    width: auto;
+    height: auto;
+}
+/* main */
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82vw;
+    height: 49vw;
+    background-color: black;
+    border-radius: 20px;
+}
+.game{
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    height: 47vw;
+    width: 80vw;
+    border-radius: 20px;
+}
+.active{
+    display: flex;
+}
+/* ------------------------------------------------------breakout */
+#breakout_block{
+    justify-content: space-evenly;
+}
+.game_block{
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+}
+#breakout_canvas{
+    background: black;
+    border: 1px solid greenyellow
+}
+.breakout_start{
+    margin: 1vw 0;
+    background-color: black;
+    color: greenyellow;
+    border: 1px solid greenyellow;
+    border-radius: 1vw;
+    font-size: 1.2vw;
+}
+.cp_embed_iframe {
+    width: 39vw !important;
+    height: 47vw;
+}
+.game_subscription{
+    border: 1px solid greenyellow;
+    border-radius: 1vw;
+    padding: 0.5vw;
+    font-size: 1vw;
+}
+/* ------------------------------------------------------snake */
+#snake_block{
+    
+}
